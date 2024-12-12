@@ -17,7 +17,6 @@ def word_search(input, target, d):
         if len(word) > 4:
             return 0
 
-        part_res = 0
         for dx in d:
             for dy in d:
                 if dx == 0 and dy == 0:
@@ -31,15 +30,12 @@ def word_search(input, target, d):
 
                 cord = (x + dx, y + dy)
                 cords.append(cord)
-                part_res += bfs(cords, cord[0], cord[1], (dx, dy))
+                bfs(cords, cord[0], cord[1], (dx, dy))
                 cords.remove(cord)
 
-        return part_res
-
-    res = 0
     for x in range(len(input)):
         for y in range(len(input[0])):
-            res += bfs([(x, y)], x, y)
+            bfs([(x, y)], x, y)
 
     return visited
 
